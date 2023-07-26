@@ -1,0 +1,245 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #f9f9f9;
+  }
+  
+  .navigation-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 55px;
+    padding: 0 20px;
+    background: #000000;
+    color: #f9f9f9;
+  }
+  
+  .site-identity-logo {
+    display: flex;
+    align-items: center;
+    /*   gap: 12px; */
+    width: 90px;
+  }
+  
+  .site-identity-logo-text {
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .navigation-menu__icons {
+    display: flex;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .navigation-menu__icons {
+      flex: 1 1 auto;
+      justify-content: center;
+      margin-right: 120px;
+    }
+  }
+  
+  .navigation-menu__icons > button {
+    position: relative;
+    flex: 0 0 36px;
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    height: 55px;
+    width: 36px;
+    color: #555555;
+  }
+  
+  button {
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+  .navigation-menu__icons button {
+    border-right: 1px solid #000;
+    padding-right: 10px;
+    margin-right: 10px;
+  }
+
+  .navigation-menu__icons button:last-child {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+  }
+  
+  .navigation-menu__icons > button.active {
+    color: #f9f9f9;
+  }
+  
+  .navigation-menu__icons > button.active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    translate: -50% 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #f9f9f9;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .navigation-menu__icons > button:last-child {
+      position: absolute;
+      right: 30px;
+    }
+  }
+  
+
+  .notification-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+  }
+  
+  .notification-content {
+    text-align: center;
+  }
+  
+  .notification-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .notification-message {
+    margin-bottom: 20px;
+  }
+  
+  .notification-close {
+    background-color: #f9f9f9;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+  
+  .button-container button {
+    margin-top: 8px;
+    width: 60%;
+    box-sizing: border-box;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  #reset {
+    margin-right:17px;
+    padding-right:25px;
+    width: 10px;
+    box-sizing: border-box;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .button-container button:active {
+    background-color: #003a80;
+  }
+  
+  .button-container button:focus {
+    outline: none;
+  }
+  #res{
+    width: 80%;
+  }
+  #track.field {
+    display: flex;
+    align-items: center;
+  }
+  
+  .label-tracker {
+    margin-left: 6px;
+  }
+  
+  
+  
+  #copy {
+    display: none;
+    align-items: center;
+    padding: 8px;
+    background-color: #f0f0f0;
+    border: none;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  #copy::before {
+    content: "\f0c5"; /* Unicode for the fa-copy icon */
+    font-family: "Font Awesome 5 Free"; /* Replace with your Font Awesome font family */
+    font-weight: 400;
+    margin-right: 6px;
+  }
+  
+  #copy:hover {
+    background-color: #e0e0e0;
+  }
+  
+  
+#copied-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: none;
+  }
+  
+  #copied-popup.show {
+    display: block;
+  }
+  
+  #copy ::before {
+    background: none;
+    border: none;
+    padding: 8px;
+    margin-top: 8px;
+    font-size: 0;
+    cursor: pointer;
+    display: flex;
+  align-items: center;
+  }
+  
+  #copy span {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+  }
+  

@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hash2Magnet link generator</title>
+        <meta name="description" content="Online magnet link from hash. Convert a torrent hash to a magnet link to easily download torrents." />
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="assets/faq.css">
+        <link href="./styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <style media="screen">
+        body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+        h2 {}
+        .header {
+            width: 90%;
+            margin:auto;
+        }
+        .form-container {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+        .content-container {
+            width: 50%;
+            margin:auto;
+        }
+        #show-link{
+            color: grey;
+            font-size: 0.6em;
+        }
+        .result-container {
+            margin-top: 32px;
+            margin-bottom: 32px;
+        }
+        .field input {
+            padding: 8px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        width: 100%; /* Set the input width to 100% */
+        box-sizing: border-box; /* Include padding and border in the width */
+        }
+        .field {
+        display: flex;
+        align-items: center;
+    }
+    
+    .field input[type="checkbox"] {
+        margin-right: 8px;
+    }
+        .button-container button {
+            padding: 8px;
+            margin-top: 8px;
+        }
+</style>
+
+<script type="text/javascript">
+    function update() {
+        var hash = document.getElementById("hash").value;
+        var name = document.getElementById("name").value;
+        var trackers = "&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80" +
+            "&tr=udp%3A%2F%2Fopentor.org%3A2710" +
+            "&tr=udp%3A%2F%2Ftracker.ccc.de%3A80" +
+            "&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969" +
+            "&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969" +
+            "&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce" +
+            "&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce" +
+            "&tr=http%3A%2F%2Ftracker.ipv6tracker.ru%3A80%2Fannounce" +
+            "&tr=udp%3A%2F%2Ftracker.birkenwald.de%3A6969%2Fannounce" +
+            "&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce" +
+            "&tr=http%3A%2F%2Ftracker.bt4g.com%3A2095%2Fannounce" +
+            "&tr=http%3A%2F%2Ftracker.files.fm%3A6969%2Fannounce";
+        var magnetLink = "magnet:?xt=urn:btih:" + hash + "&dn=" + encodeURIComponent(name);
+        
+        if (document.getElementById("tracker-checkbox").checked) {
+            magnetLink += trackers;
+        }
+        
+        document.getElementById("link").href = magnetLink;
+        document.getElementById("link").innerText = magnetLink;
+        document.getElementById("show-link").innerText = magnetLink;
+        document.getElementById("copy").style.display = "block";
+        document.getElementById("copied-popup").style.display = "none";
+    }
+
+    function generate() {
+        var hash = document.getElementById("hash").value.trim(); // Get the hash value and remove leading/trailing whitespace
+        if (hash === "") {
+            alert("Please enter a hash value.");
+            return;
+        }
+        
+        update();
+        document.getElementById("res").hidden = false;
+    }
+
+    function resetInput() {
+        document.getElementById("hash").value = "";
+        document.getElementById("name").value = "";
+        document.getElementById("tracker-checkbox").checked = false;
+        document.getElementById("res").hidden = true;
+        document.getElementById("copy").style.display = "none";
+    }
+
+    function copyToClipboard() {
+        var link = document.getElementById("link");
+        link.select();
+        link.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        document.getElementById("copied-popup").style.display = "block";
+    }
+</script>
+
+    </head>
+    <body> 
+        <nav class="navigation-menu">
+            <section class="site-identity-logo">
+              <h3 class="site-identity-logo-text">Hash2Magnet</h3>
+            </section>
+            <nav class="navigation-menu__icons">
+              <button type="button" class="fa fa-magnet active" title="Magnet2torrent"></button>
+              <button type="button" class="fa fa-bolt" title="torrent2magnet"></button>
+              <button type="button" class="fa fa-history" onclick="showNotification(1)" title="changelog"></button>
+              <button type="button" class="fa fa-language" onclick="showNotification(2)" title="Change Language"></button>            
+            </nav>
+          </nav>
+          <div class="notification-popup" id="notification-popup1">
+            <div class="notification-content">
+              <h4 class="notification-title">Changelog</h4>
+              <p class="notification-message"><b>V 1.0</b>&nbsp; Created Main Page with html, css and js.</p>
+              <button class="notification-close" onclick="hideNotification(1)">Close</button>
+            </div>
+          </div>
+          <div class="notification-popup" id="notification-popup2">
+            <div class="notification-content">
+              <h4 class="notification-title">Change Language</h4>
+              <p class="notification-message">This function is still Developing.</p>
+              <button class="notification-close" onclick="hideNotification(2)">Close</button>
+            </div>
+          </div>
+          
+          <script src="assets/nav.js"></script>
+
+        <div class="header">
+            <h1>Magnet link generator</h1>
+            <p>Easy way to generate a magnet link from an hash. Some site share the hash as "http://... /hash". in this case you can just copy and past the full url, the generator will extract the hash for you.  V 1.2</p>
+        </div>
+        
+        <div class="form-container">
+            <div class="field">
+                <input type="text" id="hash" required="required" onchange="update()" placeholder="Hash" size="80">
+            </div>
+            <div class="field">
+                <input type="text" id="name" onchange="update()" placeholder="Name" size="80">
+            </div>
+            <div id="track">
+            <div class="field">
+                <input type="checkbox" id="tracker-checkbox" onchange="update()" size="80">
+                <label for="tracker-checkbox">Add_trackers</label>
+            </div></div>
+            <div class="button-container">
+                <button onclick="generate()" title="Generate"><span>Generate</span></button>
+                <button id="reset" onclick="resetInput()"><i class="fas fa-undo" title="Reset"></i><span></span></button>
+            </div>
+            <div id="res" hidden>
+            <div class="result-container">
+                <a href="magnet:" id="link" hidden>Magnet Link</a>
+                <p id="show-link"></p>
+                <button id="copy" onclick="copyToClipboard()">Copy</button>
+                <div id="copied-popup">Copied!</div></div>
+        </div>
+        <!-- Copy by dilushanka -->
+<script>function copyToClipboard(){var e=document.getElementById("show-link").textContent;""!==e?navigator.clipboard.writeText(e).then((function(){showCopiedMessage()})).catch((function(e){showError("Copy failed: "+e)})):showError("No magnet URL to copy")}function showCopiedMessage(){var e=document.getElementById("copied-popup");e.classList.add("show"),setTimeout((function(){e.classList.remove("show")}),2e3)}function resetInput(){document.getElementById("hash").value="",document.getElementById("name").value="",document.getElementById("link").href="magnet:",document.getElementById("show-link").textContent="",document.getElementById("link").hidden=!0}</script> 
+
+<!-- Faq by dilushanka -->
+<div class="faqcontainer">
+    <h2>FAQ</h2>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">What is the Magnet links?</span><span class="icon" aria-hidden="true"></span></button>
+        <div class="accordion-content">
+          <p>Magnet links are an alternative way to download and share bittorrent files. A magnet link is in essence a link containing as short unique code to identify a specific torrent file called <b>hash</b>. With the magnet link torrent clients can download the torrent file and successively the file or files shared by the torrent without any additional step.
+
+            Magnet links are easier to share between users compare to torrent files but they can also be use for more than just torrents.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">Magnet links vs Torrent files</span><span class="icon" aria-hidden="true"></span></button>
+        <div class="accordion-content">
+          <p>Magnet links are different from torrent files. A torrent file is a small file that contains all the necessary information to download a larger file. A magnet link is instead just a link that enable the download of a torrent file with the usage of a torrent client.
+
+            When you are using magnet links, you are still donwloading torrents files. Just in a more userfriendly way.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">How to use magnet links?</span><span class="icon" aria-hidden="true"></span></button>
+        <div class="accordion-content">
+          <p>To use magnet links (also known as magnet URIs) you only need to have a bittorrent client that supports them. The great majority of the popular torrent clients support magnet links already. You don't need to do anything else than open the link.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">Why do you need a magnet link generator?</span><span class="icon" aria-hidden="true"></span></button>
+        <div class="accordion-content">
+          <p>Many websites provide only the hash part of a magnet link, although is very easy to create the magnet link yourself a generator can be a quicker way for the wast majority of the users.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title">What is a tracker?</span><span class="icon" aria-hidden="true"></span></button>
+        <div class="accordion-content">
+          <p>A torrent p2p network is composed of nodes. Each node acts as a tracker. Torrent clients come installed with a number of known tracker nodes (DHT). Generally you don't need to add trackers to a magnet link.
+
+            It may be usefull to include trackers when the resource identified by the hash is not very popular.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- partial -->
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <script  src="assets/faq.js"></script>
+  </body>
+</html>
