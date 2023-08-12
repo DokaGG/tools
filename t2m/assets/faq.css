@@ -5,6 +5,11 @@
   padding: 4rem;
   width: 48rem;
 }
+@media only screen and (max-width: 980px) {
+  .faqcontainer {
+    width: auto;
+  }
+}
 .faqcontainer p {
   text-align: left;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
