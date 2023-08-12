@@ -1,9 +1,12 @@
-
-
 .faqcontainer {
   margin: 0 auto;
   padding: 4rem;
   width: 48rem;
+}
+@media only screen and (max-width: 980px) {
+  .faqcontainer {
+    width: auto;
+  }
 }
 
 .accordion .accordion-item {
