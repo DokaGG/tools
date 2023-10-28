@@ -1,0 +1,149 @@
+
+  body {
+    background: linear-gradient(#141e30, #243b55);
+  }
+
+  button#button {
+      width: 29%;
+      height: 40px;
+      padding: 5px;
+      color: #fff;
+      border-style: none;
+      background: #03A9F4;
+      cursor: pointer;
+  }
+  button#resetbtn {
+      width: 29%;
+      height: 40px;
+      padding: 5px;
+      color: #fff;
+      border-style: dashed;
+      background: #607D8B;
+      cursor: pointer;
+  }
+  button#copiedbtn {
+      width: 100%;
+      height: 40px;
+      padding: 5px;
+      color: #fff;
+      border-style: none;
+      background: #4CAF50;
+      cursor: pointer;
+  }
+  input#DocID, input#output {
+      width: 70%;
+      height: 30px;
+      color: #2196F3;
+      font-size: 16px;
+      font-weight: bold;
+  }
+  .tooltip {
+      position: relative;
+      width: 70%;
+      padding: 5px;
+      display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+      width: 140px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -75px;
+      opacity: 0;
+      transition: opacity 0.3s;
+  }
+  
+  .tooltip .tooltiptext::after {
+      content: "";
+      width: 140px;
+      top: 100%;
+      left: 50%;
+      margin-left: 5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+  }
+  
+  body div:nth-child(2) {
+    position: relative;
+    top: 28px;
+    
+    transform: translate(0px)translateY(0px);
+  }
+  #genb {
+    align-items: center;
+    box-shadow: -16px 0px 33px 8px #bed10e;
+    }
+
+    #page_content .how-to {
+        overflow: auto;
+        position: relative;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: "Century Gothic", Calibri;
+        color: rgb(208, 223, 9);
+    }
+    h3 {
+        color: #fff;
+    }
+
+    p {
+        font-family: "Century Gothic", Calibri;
+        color: #fff;
+    }
+    a {
+        color: rgb(224, 4, 4);
+        text-decoration: none;
+    }
+    @media only screen 
+    and (max-width : 380px) {
+    button#button {
+        width: 49%;
+        height: 40px;
+        padding: 5px;
+        color: #fff;
+        border-style: none;
+        background: #03A9F4;
+        cursor: pointer;
+    }
+    button#resetbtn {
+        width: 39%;
+        height: 40px;
+        padding: 5px;
+        color: #fff;
+        border-style: dashed;
+        background: #607D8B;
+        cursor: pointer;
+    }
+    #page_content .how-to {
+        overflow: auto;
+        left: 5%;
+        width: 100%;
+    }
+    #page_content img {
+        width: 100%;
+        height: 100%;
+    }
+   
+    }
+    @media only screen 
+    and (max-width : 690px) {
+        #page_content img {
+            width: 100%;
+            height: 100%;
+        }
+    }

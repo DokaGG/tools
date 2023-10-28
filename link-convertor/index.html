@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="language" content="en-us">
+<link href="./img/favicon.png" rel="icon" type="image/x-icon" />
+<title>Google Drive Download Link Generator</title>
+<meta name="description" content="New Google Drive link to direct Download Link Convertor.Generate direct download links for any file stored in your Google Drive account. Save time and enjoy seamless file downloads with our efficient tool.">
+<meta name="keywords" content="drive link to direct, direct download link to drive, drive link generator">
+<meta name="author" content="HelaLK Media Unit by DILU">
+<meta property="og:description" content="New Google Drive link to direct Download Link Convertor.Generate direct download links for any file stored in your Google Drive account."/>
+<meta property="og:title" content="Google Drive Download Link Generator" />
+<meta property="og:image" content="./img/gdrive.png"/>
+<meta property="og:url" content="https://link2direct.helalk.com/" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@helalk">
+<meta name="twitter:title" content="Google Drive Download Link Generator">
+<meta name="twitter:image" content="./img/gdrive.png">
+<meta name="twitter:site" content="@helalk">
+<meta name="twitter:description" content="New Google Drive link to direct Download Link Convertor.Generate direct download links for any file stored in your Google Drive account.">
+<link rel="stylesheet" type="text/css" href="main.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+ <body>
+<!--Header Nav Bar-->
+<link rel="stylesheet" type="text/css" href="./assets/css/nav.css"></style>   
+<header id="navbar">
+          <nav class="navbar-Acontainer Acontainer">
+            <div class="navbar-logo">
+                  <img alt="helalk tool logo" src="./img/logo.png">
+                </div>
+            <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div id="navbar-menu" aria-labelledby="navbar-toggle">
+              <ul class="navbar-links">
+                <li class="navbar-item"><a class="navbar-link" href="/" ><i class="fa fa-home"></i>Home</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="https://www.helalk.com/"><i class="fa fa-folder"></i>Tools</a></li>
+                <li class="navbar-item"><a class="navbar-link" href="https://www.helalk.com/contact-us/"><i class="fa fa-envelope-open-o"></i>Contact</a></li>
+               
+              </ul>
+            </div>
+          </nav>
+</header>
+<script src="./assets/js/nav.js"></script>
+<!--End Header Nav Bar-->
+<br><h1>Google Drive link to Direct Download Generator</h1><br><br><br><br>
+<script language="javascript">
+    window.onload = setup;
+    function setup(){
+     document.getElementById('button').addEventListener('click', go, false);
+    }
+      function go(){
+        var DocIDfull = document.getElementById('DocID').value;
+        var DocIDstart = DocIDfull.indexOf('/d/');
+        var DocIDend = DocIDfull.indexOf('/', DocIDstart+3);
+        if (DocIDstart == -1){
+          document.getElementById('Input_span').innerHTML = '<input type="text" id="output" style="background-color: #ff0000;color: white;border-style: none;" value="Error: Invalid URL" readonly>';
+          return
+        }
+        if (DocIDend == -1){
+          var DocID = DocIDfull.slice(DocIDstart+3)
+        }
+        else{
+          var DocID = DocIDfull.slice(DocIDstart+3, DocIDend)
+        }
+        var ID = 'https://drive.google.com/uc?export=download&id=' + DocID;
+        document.getElementById('Input_span').innerHTML = '<input type="text" onclick="this.select();" id="output"  value="' + ID + '" readonly>' +
+      '<hr style="visibility:hidden;height:0">' +'<font style="font-size: 12px;font-weight: bold;color: #086900;">Tip: Press button below to copy generated URL.</font>';
+        document.getElementByID('output').select();
+    }
+</script>
+<div id="genb" align="center">
+  <font face="Century Gothic, Calibri" size="5" color="white">Google Drive sharing URL:</font>
+  <br>
+  <input id="DocID" type="text" placeholder='Paste URL here then press Generate Link button'>
+  <br><br>
+  <center><button id="button">Generate Link</button>  <button id="resetbtn" onclick="location.reload();">Reset</button></center>
+  <br><br>
+  <font face="Century Gothic, Calibri" size="5" color="white">Output direct download link:</font>
+  <br>
+  <span id="Input_span">
+  <input id="output" type="text" readonly="">
+  </span>
+  <br><br>
+  <div class="tooltip">
+  <button id="copiedbtn" onclick="copied()" onmouseout="outFunc()"><span class="tooltiptext" id="myTooltip">Copy to clipboard</span>Copy Generate Link</button>
+  </div>
+</div>
+  <script>
+  function copied() {
+    var copyText = document.getElementById("output");
+    copyText.select();
+    document.execCommand("copy");
+    var tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = "Copied: " + copyText.value;
+  }
+  function outFunc() {
+    var tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = "Copy to clipboard";
+  }
+  </script>
+<br><br><br/><br/>
+<div id="page_content">
+  <div class="how-to">
+    <b><h2>How to get Google drive share link:</h2></b>
+          <h3>Step 1:</h3> <p>Go to <a href="https://drive.google.com/" target="_blank">Google Drive</a> and right click the file that you want to share. Then click on "Share...".</p>
+        <div>
+          <img alt="google drive convertor" src="img/Screenshot_1.jpg" width="600" height="575" />
+        </div>
+          <br/>
+          <br/>
+          <h3>Step 2:</h3><p> On the window that comes up, click "Get shareable link".</p>
+          <div >
+            <img alt="google drive link convertor" src="img/Screenshot_2.jpg" width="600" height="345" />
+          </div>
+          <br/>
+          <br/>
+          <h3>Step 3:</h3><p> Make sure the dropdown is set to one of the "Anyone with the link..." or "Anyone on the internet..." options, then click "Copy link".</p>
+          <div >
+            <img alt="drive link convertor" src="img/Screenshot_3.jpg" width="600" height="485" />
+          </div>
+        </div>
+      </div>
+  </div>
+ </div>
+</div>
+<!--Cookies-->
+<link rel="stylesheet" href="./assets/css/bootstrap/cookies.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
+<div class="container">
+    <div class="card" style="margin-top: 70px">
+     <div class="card-body">
+         <div id="fillme"></div>
+     </div>
+    </div>
+</div>
+<div class="alert text-center cookiealert" role="alert">
+<b>Do you like cookies?</b> &#x1F36A; We use cookies to ensure you get the best experience on our website. <a href="https://www.helalk.com/tac/" target="_blank">Learn more</a>
+<button type="button" class="btn btn-primary btn-sm acceptcookies">I agree</button>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
+<!--end of the Cookies-->
+<!--Footer-->
+          <div class="footer-helalk">
+            <footer>
+                <div class="social"><a href="https://www.youtube.com/c/Hela_LK" aria-label="Youtube" target="_blank"><i class="icon ion-social-youtube"></i></a><a href="#" aria-label="Twitter" target="_blank"><i class="icon ion-social-twitter"></i></a><a href="https://www.facebook.com/Helalk.com.FB" aria-label="Facebook" target="_blank"><i class="icon ion-social-facebook"></i></a></div>
+              <hr style="height:2px;border-width:0;color:gray;background-color:white">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Home</a></li>
+                    <li class="list-inline-item"><a href="https://www.helalk.com/donate/" aria-label="Donate" target="_blank">Donate</a></li>
+                    <li class="list-inline-item"><a href="https://www.helalk.com/about/" aria-label="About" target="_blank">About</a></li>
+                    <!--<li class="list-inline-item"><a href="#">Sitemap</a></li>-->
+                    <li class="list-inline-item"><a href="https://www.helalk.com/privacy-policy/" aria-label="privacy-policy" target="_blank">Privacy Notice</a></li>
+                </ul>
+                <p class="copyright"><a href="https://helalk.com" aria-label="Helalk" target="_blank"> HelaLK </a> © DILU <script>
+                    document.write(new Date().getFullYear());
+                  </script></p>
+            </footer>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
