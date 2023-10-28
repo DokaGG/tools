@@ -21,3 +21,4 @@ if (window.innerWidth > 800) {
 		scrollContainer.scrollLeft += evt.deltaY;
 	});
 }
+
